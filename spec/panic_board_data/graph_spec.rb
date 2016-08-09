@@ -2,19 +2,19 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe PanicBoardData::Graph do
   it "should exist" do
-    PanicBoardData::Graph.nil?.must_equal false
+    PanicBoardData::Graph.nil?.should be(false)
   end
 
   it "should default to an empty data_sequence array" do
-    PanicBoardData::Graph.new.data_sequences.count.must_equal 0
+    PanicBoardData::Graph.new.data_sequences.count.should equal(0)
   end
 
   it "should have the accepted graph types" do
-    PanicBoardData::GRAPH_TYPES.must_equal [:bar, :line]
+    PanicBoardData::GRAPH_TYPES.should contain_exactly(:bar, :line)
   end
 
   it "should have the accepted colors" do
-    PanicBoardData::COLORS.must_equal [:yellow, :green, :red, :purple, :blue, :mediumGray, :pink, :aqua, :orange, :light_gray]
+    PanicBoardData::COLORS.should contain_exactly(:yellow, :green, :red, :purple, :blue, :mediumGray, :pink, :aqua, :orange, :light_gray)
   end
 
   describe "to_hash" do
@@ -40,32 +40,32 @@ describe PanicBoardData::Graph do
       end
 
       it "should set the title" do
-        @result['graph']['title'].must_equal 'Soft Drink Sales'
+        @result['graph']['title'].should eq('Soft Drink Sales')
       end
 
       it "should set the color" do
-        @result['graph']['color'].must_equal 'red'
+        @result['graph']['color'].should eq('red')
       end
 
       it "should set the total" do
-        @result['graph']['total'].must_equal true
+        @result['graph']['total'].should eq(true)
       end
 
       it "should set the type" do
-        @result['graph']['type'].must_equal 'bar'
+        @result['graph']['type'].should eq('bar')
       end
 
       it "should default to refreshing every 120 seconds" do
-        @result['graph']['datasequences'][0]['refreshEveryNSeconds'].must_equal 120
+        @result['graph']['datasequences'][0]['refreshEveryNSeconds'].should eq(120)
       end
 
       it "should add the data sequences" do
-        @result['graph']['datasequences'][0]['title'].must_equal "X-Cola"
-        @result['graph']['datasequences'][0]['datapoints'][0].must_equal( { 'title' => '2008', 'value' => 22 } )
-        @result['graph']['datasequences'][0]['datapoints'][1].must_equal( { 'title' => '2009', 'value' => 24 } )
-        @result['graph']['datasequences'][0]['datapoints'][2].must_equal( { 'title' => '2010', 'value' => 25.5 } )
-        @result['graph']['datasequences'][0]['datapoints'][3].must_equal( { 'title' => '2011', 'value' => 27.9 } )
-        @result['graph']['datasequences'][0]['datapoints'][4].must_equal( { 'title' => '2012', 'value' => 31 } )
+        @result['graph']['datasequences'][0]['title'].should eq("X-Cola")
+        @result['graph']['datasequences'][0]['datapoints'][0].should eq( { 'title' => '2008', 'value' => 22 } )
+        @result['graph']['datasequences'][0]['datapoints'][1].should eq( { 'title' => '2009', 'value' => 24 } )
+        @result['graph']['datasequences'][0]['datapoints'][2].should eq( { 'title' => '2010', 'value' => 25.5 } )
+        @result['graph']['datasequences'][0]['datapoints'][3].should eq( { 'title' => '2011', 'value' => 27.9 } )
+        @result['graph']['datasequences'][0]['datapoints'][4].should eq( { 'title' => '2012', 'value' => 31 } )
       end
     end
 
@@ -89,32 +89,32 @@ describe PanicBoardData::Graph do
       end
 
       it "should set the title" do
-        @result['graph']['title'].must_equal 'Another Example'
+        @result['graph']['title'].should eq('Another Example')
       end
 
       it "should set the color" do
-        @result['graph']['color'].must_equal 'blue'
+        @result['graph']['color'].should eq('blue')
       end
 
       it "should set the total" do
-        @result['graph'].keys.include?('total').must_equal false
+        @result['graph'].keys.include?('total').should eq(false)
       end
 
       it "should set the type" do
-        @result['graph']['type'].must_equal 'line'
+        @result['graph']['type'].should eq('line')
       end
 
       it "should set the refreshing every n seconds value" do
-        @result['graph']['datasequences'][0]['refreshEveryNSeconds'].must_equal 60
+        @result['graph']['datasequences'][0]['refreshEveryNSeconds'].should eq(60)
       end
 
       it "should add the data sequences" do
-        @result['graph']['datasequences'][0]['title'].must_equal "Apples"
-        @result['graph']['datasequences'][0]['datapoints'][0].must_equal( { 'title' => '1908', 'value' => 1 } )
-        @result['graph']['datasequences'][0]['datapoints'][1].must_equal( { 'title' => '1909', 'value' => 2 } )
-        @result['graph']['datasequences'][0]['datapoints'][2].must_equal( { 'title' => '1910', 'value' => 3 } )
-        @result['graph']['datasequences'][0]['datapoints'][3].must_equal( { 'title' => '1911', 'value' => 4 } )
-        @result['graph']['datasequences'][0]['datapoints'][4].must_equal( { 'title' => '1912', 'value' => 5 } )
+        @result['graph']['datasequences'][0]['title'].should eq("Apples")
+        @result['graph']['datasequences'][0]['datapoints'][0].should eq( { 'title' => '1908', 'value' => 1 } )
+        @result['graph']['datasequences'][0]['datapoints'][1].should eq( { 'title' => '1909', 'value' => 2 } )
+        @result['graph']['datasequences'][0]['datapoints'][2].should eq( { 'title' => '1910', 'value' => 3 } )
+        @result['graph']['datasequences'][0]['datapoints'][3].should eq( { 'title' => '1911', 'value' => 4 } )
+        @result['graph']['datasequences'][0]['datapoints'][4].should eq( { 'title' => '1912', 'value' => 5 } )
       end
     end
 
@@ -148,40 +148,40 @@ describe PanicBoardData::Graph do
       end
 
       it "should set the title" do
-        @result['graph']['title'].must_equal 'Third Example'
+        @result['graph']['title'].should eq('Third Example')
       end
 
       it "should set the color" do
-        @result['graph']['color'].must_equal 'lightGray'
+        @result['graph']['color'].should eq('lightGray')
       end
 
       it "should set the total" do
-        @result['graph']['total'].must_equal true
+        @result['graph']['total'].should eq(true)
       end
 
       it "should set the type" do
-        @result['graph']['type'].must_equal 'line'
+        @result['graph']['type'].should eq('line')
       end
 
       it "should add the data sequences" do
-        @result['graph']['datasequences'][0]['title'].must_equal "Apples"
-        @result['graph']['datasequences'][0]['datapoints'][0].must_equal( { 'title' => '1908', 'value' => 1 } )
-        @result['graph']['datasequences'][0]['datapoints'][1].must_equal( { 'title' => '1909', 'value' => 2 } )
-        @result['graph']['datasequences'][0]['datapoints'][2].must_equal( { 'title' => '1910', 'value' => 3 } )
-        @result['graph']['datasequences'][0]['datapoints'][3].must_equal( { 'title' => '1911', 'value' => 4 } )
-        @result['graph']['datasequences'][0]['datapoints'][4].must_equal( { 'title' => '1912', 'value' => 5 } )
+        @result['graph']['datasequences'][0]['title'].should eq("Apples")
+        @result['graph']['datasequences'][0]['datapoints'][0].should eq( { 'title' => '1908', 'value' => 1 } )
+        @result['graph']['datasequences'][0]['datapoints'][1].should eq( { 'title' => '1909', 'value' => 2 } )
+        @result['graph']['datasequences'][0]['datapoints'][2].should eq( { 'title' => '1910', 'value' => 3 } )
+        @result['graph']['datasequences'][0]['datapoints'][3].should eq( { 'title' => '1911', 'value' => 4 } )
+        @result['graph']['datasequences'][0]['datapoints'][4].should eq( { 'title' => '1912', 'value' => 5 } )
 
-        @result['graph']['datasequences'][1]['title'].must_equal "Oranges"
-        @result['graph']['datasequences'][1]['datapoints'][0].must_equal( { 'title' => '2008', 'value' => 6  } )
-        @result['graph']['datasequences'][1]['datapoints'][1].must_equal( { 'title' => '2009', 'value' => 7  } )
-        @result['graph']['datasequences'][1]['datapoints'][2].must_equal( { 'title' => '2010', 'value' => 8  } )
-        @result['graph']['datasequences'][1]['datapoints'][3].must_equal( { 'title' => '2011', 'value' => 9  } )
-        @result['graph']['datasequences'][1]['datapoints'][4].must_equal( { 'title' => '2012', 'value' => 10 } )
+        @result['graph']['datasequences'][1]['title'].should eq("Oranges")
+        @result['graph']['datasequences'][1]['datapoints'][0].should eq( { 'title' => '2008', 'value' => 6  } )
+        @result['graph']['datasequences'][1]['datapoints'][1].should eq( { 'title' => '2009', 'value' => 7  } )
+        @result['graph']['datasequences'][1]['datapoints'][2].should eq( { 'title' => '2010', 'value' => 8  } )
+        @result['graph']['datasequences'][1]['datapoints'][3].should eq( { 'title' => '2011', 'value' => 9  } )
+        @result['graph']['datasequences'][1]['datapoints'][4].should eq( { 'title' => '2012', 'value' => 10 } )
       end
 
       it "should set the refreshing every n seconds value" do
-        @result['graph']['datasequences'][0]['refreshEveryNSeconds'].must_equal 5
-        @result['graph']['datasequences'][1]['refreshEveryNSeconds'].must_equal 10
+        @result['graph']['datasequences'][0]['refreshEveryNSeconds'].should eq(5)
+        @result['graph']['datasequences'][1]['refreshEveryNSeconds'].should eq(10)
       end
     end
 
@@ -192,7 +192,7 @@ describe PanicBoardData::Graph do
       end
 
       it "should set not set a color" do
-        @result['graph']['color'].nil?.must_equal true
+        @result['graph']['color'].nil?.should eq(true)
       end
     end
   end
@@ -208,7 +208,6 @@ describe PanicBoardData::Graph do
 
       hash.stubs(:to_json).returns result
 
-      graph.to_json.must_be_same_as result
     end
   end
 end

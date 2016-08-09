@@ -15,9 +15,9 @@ describe PanicBoardData::SingleValue do
 
       it "should return a bunch of html" do
         result = single_value.to_html
-        result.length.must_equal test.length
-        result.include?(test.heading).must_equal true
-        result.include?(test.value).must_equal true
+        result.length.should eq(test.length)
+        result.include?(test.heading).should eq(true)
+        result.include?(test.value).should eq(true)
       end
 
     end

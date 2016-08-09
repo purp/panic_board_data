@@ -9,13 +9,13 @@ describe PanicBoardData::Table do
   describe "initialize" do
 
     it "should default data to an empty array" do
-      PanicBoardData::Table.new.data.count.must_equal 0
+      PanicBoardData::Table.new.data.count.should eq(0)
     end
 
     it "should allow a new table to be built with data" do
       data = Object.new
       table = PanicBoardData::Table.new data
-      table.data.must_be_same_as data
+      table.data.should equal(data)
     end
 
   end
@@ -29,7 +29,7 @@ describe PanicBoardData::Table do
       end
 
       it "should return a result" do
-        @result.must_equal "<table></table>"
+        @result.should eq("<table></table>")
       end
 
     end
@@ -48,7 +48,7 @@ describe PanicBoardData::Table do
         end
 
         it "should return a result" do
-          @result.must_equal "<table><tr>#{test.result}</tr></table>"
+          @result.should eq("<table><tr>#{test.result}</tr></table>")
         end
 
       end
@@ -67,7 +67,7 @@ describe PanicBoardData::Table do
         end
 
         it "should return a result" do
-          @result.must_equal "<table><tr>#{test.result}</tr></table>"
+          @result.should eq("<table><tr>#{test.result}</tr></table>")
         end
       end
     end
@@ -88,7 +88,7 @@ describe PanicBoardData::Table do
         end
 
         it "should return a result" do
-          @result.must_equal "<table><tr>#{test.result}</tr></table>"
+          @result.should eq("<table><tr>#{test.result}</tr></table>")
         end
 
       end
@@ -108,7 +108,7 @@ describe PanicBoardData::Table do
         end
 
         it "should return a result" do
-          @result.must_equal "<table><tr>#{test.result}</tr></table>"
+          @result.should eq("<table><tr>#{test.result}</tr></table>")
         end
 
       end
@@ -118,7 +118,7 @@ describe PanicBoardData::Table do
   end
 
   [->(d) { PanicBoardData::Table.to_csv(d) },
-   ->(d) do 
+   ->(d) do
            t = PanicBoardData::Table.new
            t.data = d
            t.to_csv
@@ -136,7 +136,7 @@ describe PanicBoardData::Table do
         let(:data) { [] }
 
         it "should return an empty string" do
-          @result.must_equal ''
+          @result.should eq('')
         end
 
       end
@@ -153,7 +153,7 @@ describe PanicBoardData::Table do
           let(:data) { [ test.array ] }
 
           it "should return the single value" do
-            @result.must_equal test.result
+            @result.should eq(test.result)
           end
 
         end
@@ -169,7 +169,7 @@ describe PanicBoardData::Table do
           let(:data) { [ test.first_row, test.second_row ] }
 
           it "should return the single value" do
-            @result.must_equal test.result
+            @result.should eq(test.result)
           end
 
         end

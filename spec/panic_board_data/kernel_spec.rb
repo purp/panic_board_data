@@ -11,8 +11,8 @@ describe "progress_bar_to" do
       end
 
       it "should create a progress bar with the right value" do
-        @result.is_a?(PanicBoardData::ProgressBar).must_equal true
-        @result.value.must_equal value
+        @result.is_a?(PanicBoardData::ProgressBar).should eq(true)
+        @result.value.should eq(value)
       end
 
     end
@@ -32,7 +32,7 @@ describe "progress_bar_to" do
       end
 
       it "should return a result" do
-        @result.must_equal test.result
+        @result.should eq(test.result)
       end
 
     end
