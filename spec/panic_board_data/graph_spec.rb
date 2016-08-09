@@ -200,14 +200,13 @@ describe PanicBoardData::Graph do
   describe "to_json" do
     it "should call to_json on the to_hash result" do
       graph = PanicBoardData::Graph.new
-
       result = Object.new
-
       hash = Object.new
-      graph.stubs(:to_hash).returns hash
 
-      hash.stubs(:to_json).returns result
+      allow(hash).to receive(:to_json).and_return(result)
+      allow(graph).to receive(:to_hash).and_return(hash)
 
+      graph.to_json.should equal(result)
     end
   end
 end
