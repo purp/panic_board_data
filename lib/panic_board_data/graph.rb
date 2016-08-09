@@ -13,6 +13,17 @@ module PanicBoardData
       @data_sequences = []
     end
 
+    def self.from_hash(options={})
+      graph = self.new
+
+      options.each do |attr_name, value|
+        method = "#{attr_name}="
+        graph.send(method, value) if graph.respond_to?(method)
+      end
+
+      return graph
+    end
+
     def to_hash
       {
         'graph' => graph

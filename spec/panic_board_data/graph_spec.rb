@@ -17,6 +17,17 @@ describe PanicBoardData::Graph do
     PanicBoardData::COLORS.should contain_exactly(:yellow, :green, :red, :purple, :blue, :mediumGray, :pink, :aqua, :orange, :light_gray)
   end
 
+  describe "from_hash" do
+    before do
+      @graph = PanicBoardData::Graph.from_hash(:title => "Cookie Sales", :type => "line")
+    end
+
+    it "should set the title and type correctly" do |example|
+      @graph.title.should eq("Cookie Sales")
+      @graph.type.should eq("line")
+    end
+  end
+
   describe "to_hash" do
 
     let(:graph) { PanicBoardData::Graph.new }
