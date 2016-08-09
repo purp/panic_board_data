@@ -14,7 +14,7 @@ module PanicBoardData
     end
 
     def to_hash
-      { 
+      {
         'graph' => graph
       }
     end
@@ -26,7 +26,7 @@ module PanicBoardData
     private
 
     def graph
-      the_graph = { 
+      the_graph = {
                     'title'         => title,
                     'color'         => formatted_color,
                     'type'          => type.to_s,
